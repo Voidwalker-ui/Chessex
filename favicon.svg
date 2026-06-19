@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Golden Crown -->
+  <g transform="translate(50, 50)">
+    <!-- Base band -->
+    <ellipse cx="0" cy="8" rx="28" ry="12" fill="#d4af37" stroke="#b8860b" stroke-width="1.5"/>
+    
+    <!-- Crown points -->
+    <polygon points="0,-28 -8,-16 -4,-8 4,-8 8,-16" fill="#d4af37" stroke="#b8860b" stroke-width="1.5"/>
+    <polygon points="-16,-8 -20,0 -12,4 -8,-4" fill="#d4af37" stroke="#b8860b" stroke-width="1.5"/>
+    <polygon points="16,-8 20,0 12,4 8,-4" fill="#d4af37" stroke="#b8860b" stroke-width="1.5"/>
+    
+    <!-- Jewels -->
+    <circle cx="0" cy="-20" r="3" fill="#ff6b6b"/>
+    <circle cx="-12" cy="0" r="2.5" fill="#4ecdc4"/>
+    <circle cx="12" cy="0" r="2.5" fill="#4ecdc4"/>
+  </g>
+</svg>
