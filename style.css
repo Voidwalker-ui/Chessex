@@ -843,6 +843,11 @@ footer .footer-logo {
 }
 footer .footer-logo span { color: var(--accent); }
 
+/* ── Anchor scroll offset (accounts for sticky nav height) ── */
+[id] {
+  scroll-margin-top: 4rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
