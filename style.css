@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@700;900&display=swap');
+
+/* ── Variables ── */
+:root {
+  --cream: #f5efe0;
+  --newsprint: #ede7d5;
+  --ink: #1a1507;
+  --ink-light: #3d3520;
+  --rule: #b8a882;
+  --accent: #9b1c1c;
+  --accent-dark: #6e1212;
+  --gold: #c8a84b;
+  --muted: #7a6e56;
+  --col-bg: #f0e9d6;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ── Masthead ── */
+.masthead {
+  background-color: var(--ink);
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--gold);
+}
+
+.masthead-tagline {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--rule);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.masthead-date {
+  font-family: 'EB Garamond', serif;
+  color: var(--rule);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Logo ── */
+.logo-bar {
+  text-align: center;
+  padding: 2rem 2rem 0.5rem;
+  background-color: var(--cream);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.logo-bar::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0px, var(--ink) 4px, transparent 4px, transparent 8px);
+  margin-top: 0.5rem;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.logo-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* ── Navigation ── */
+nav.main-nav {
+  background-color: var(--ink);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--gold);
+}
+
+nav.main-nav a {
+  color: #d4c9a8;
+  text-decoration: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.8rem;
+  border-right: 1px solid #333;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav.main-nav a:first-child { border-left: 1px solid #333; }
+
+nav.main-nav a:hover,
+nav.main-nav a.active {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Page Wrapper ── */
+.page-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Headline ── */
+.section-label {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.section-rule {
+  border: none;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  margin: 0.4rem 0 1.5rem;
+}
+
+/* ── Hero Grid (index) ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 2px 1.1fr 2px 1fr;
+  gap: 0 2rem;
+  margin-top: 2rem;
+}
+
+.col-divider {
+  background: var(--rule);
+  width: 1px;
+  align-self: stretch;
+}
+
+.hero-main-story h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.hero-main-story .deck {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0;
+}
+
+.hero-main-story p {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+
+/* Drop cap */
+.hero-main-story p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin: 0.1em 0.08em 0 0;
+  color: var(--accent);
+}
+
+.side-stories { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.side-story {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.side-story:last-child { border-bottom: none; }
+
+.side-story h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.side-story p {
+  font-size: 0.92rem;
+  color: var(--ink-light);
+  text-align: justify;
+}
+
+/* ── Chess Board Decoration ── */
+.chess-deco {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px solid var(--ink);
+  margin-bottom: 1.5rem;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.chess-deco .sq {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.7rem, 1.5vw, 1.1rem);
+  line-height: 1;
+}
+
+.chess-deco .sq.light { background: var(--cream); }
+.chess-deco .sq.dark  { background: var(--ink-light); color: #fff; }
+
+/* ── Read More Link ── */
+.read-more {
+  display: inline-block;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 0.75rem;
+  border-bottom: 1px solid var(--accent);
+  transition: color 0.2s;
+}
+.read-more:hover { color: var(--accent-dark); }
+
+/* ── Feature Strip (homepage bottom) ── */
+.feature-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--ink);
+}
+
+.feature-card {
+  border-top: 3px solid var(--accent);
+  padding-top: 0.75rem;
+}
+
+.feature-card .icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.feature-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.feature-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+.feature-card a:hover { opacity: 0.75; }
+
+/* ── Inner Page: Content Columns ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ── Card (openings, endgames, tactics) ── */
+.card {
+  border: 1px solid var(--rule);
+  background: var(--newsprint);
+  padding: 1.25rem 1.4rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s;
+}
+
+.card:hover { box-shadow: 4px 4px 0 var(--rule); transform: translate(-2px,-2px); }
+.card:hover::before { transform: scaleY(1); }
+
+.card-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.55;
+}
+
+.card .moves {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Page Headline ── */
+.page-headline {
+  margin-bottom: 2.5rem;
+}
+
+.page-headline h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.page-headline .intro {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  max-width: 60ch;
+}
+
+/* ── Blog ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.blog-main .post {
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.blog-main .post:last-child { border-bottom: none; }
+
+.post-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.post h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.post .deck {
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+}
+
+.post p {
+  font-size: 0.97rem;
+  text-align: justify;
+}
+
+.post p::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin: 0.1em 0.08em 0 0;
+  color: var(--accent);
+}
+
+/* ── Sidebar ── */
+.sidebar { position: sticky; top: 5rem; }
+
+.sidebar-section {
+  border-top: 2px solid var(--ink);
+  padding-top: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s;
+}
+.sidebar-item:hover { color: var(--accent); }
+
+.sidebar-item .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--rule);
+  line-height: 1;
+  min-width: 1.8rem;
+}
+
+.sidebar-item .title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ── Quote / Highlight Box ── */
+.pullquote {
+  border-left: 4px solid var(--accent);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--newsprint);
+}
+
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.pullquote cite {
+  display: block;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Difficulty Badge ── */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.18em 0.6em;
+  border: 1px solid currentColor;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+.badge.beginner { color: #4a7c59; }
+.badge.intermediate { color: #c48c00; }
+.badge.advanced { color: var(--accent); }
+
+/* ── Footer ── */
+footer {
+  background-color: var(--ink);
+  color: #a89e86;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  position: relative;
+  z-index: 1;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 6px, transparent 6px, transparent 12px);
+  margin-bottom: 1.2rem;
+}
+
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer .footer-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+footer .footer-logo span { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .col-divider { display: none; }
+  .feature-strip { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .blog-grid { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .three-col { grid-template-columns: 1fr 1fr; }
+  nav.main-nav a { padding: 0.7rem 1rem; font-size: 0.72rem; }
+}
+
+@media (max-width: 580px) {
+  .feature-strip { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
+  nav.main-nav { flex-wrap: wrap; }
+  .logo { font-size: 2.5rem; }
+}
