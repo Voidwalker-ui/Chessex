@@ -8,14 +8,30 @@
 </head>
 <body>
 
+  <!-- ══ ANIMATED BANNER ══ -->
+  <header class="site-banner">
+    <div class="banner-tiles" id="banner-tiles"></div>
+    <div class="banner-inner">
+      <div class="banner-left">
+        <span class="banner-est">Est. 2025 · Vol. I</span>
+        <div class="banner-rule"></div>
+        <div class="banner-rule-thin"></div>
+        <div class="banner-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="banner-wordmark">
+        <span class="banner-title">CHESS<span class="x-accent">-X</span></span>
+        <span class="banner-tagline">The Journal of Chess Mastery</span>
+      </div>
+      <div class="banner-right">
+        <span class="banner-king">♔</span>
+        <div class="banner-king-shadow"></div>
+      </div>
+    </div>
+  </header>
+
   <div class="masthead">
     <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis</span>
     <span class="masthead-date">Est. 2025 &nbsp;·&nbsp; Volume I</span>
-  </div>
-
-  <div class="logo-bar">
-    <a href="index.html" class="logo">CHESS<span>-X</span></a>
-    <div class="logo-sub">The Journal of Chess Mastery</div>
   </div>
 
   <nav class="main-nav">
@@ -37,7 +53,6 @@
 
     <div class="two-col">
 
-      <!-- Main Content -->
       <div>
 
         <p class="section-label">White Openings</p>
@@ -50,6 +65,11 @@
             <h3>Ruy Lopez <span class="badge intermediate">Intermediate</span></h3>
             <p>One of the oldest and most respected openings. White immediately pressures Black's e5 pawn and fights for long-term domination of the centre.</p>
             <div class="moves">1. e4 e5 2. Nf3 Nc6 3. Bb5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Berlin Defence</span><span class="var-moves">3...Nf6</span></div>
+              <div class="var-item"><span class="var-name">Marshall Attack</span><span class="var-moves">...d5 sacrifice</span></div>
+              <div class="var-item"><span class="var-name">Closed Ruy Lopez</span><span class="var-moves">3...a6 4.Ba4</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -57,6 +77,11 @@
             <h3>Italian Game <span class="badge beginner">Beginner</span></h3>
             <p>Clean development and central control. The Italian Game leads to rich middlegame play and is beloved by beginners and grandmasters alike.</p>
             <div class="moves">1. e4 e5 2. Nf3 Nc6 3. Bc4</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Giuoco Piano</span><span class="var-moves">3...Bc5 4.c3</span></div>
+              <div class="var-item"><span class="var-name">Evans Gambit</span><span class="var-moves">4.b4!?</span></div>
+              <div class="var-item"><span class="var-name">Two Knights</span><span class="var-moves">3...Nf6</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -64,6 +89,10 @@
             <h3>King's Gambit <span class="badge advanced">Advanced</span></h3>
             <p>A romantic, aggressive sacrifice of the f-pawn. White offers material for rapid development and a kingside attack. Not for the faint-hearted.</p>
             <div class="moves">1. e4 e5 2. f4</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">King's Gambit Accepted</span><span class="var-moves">2...exf4</span></div>
+              <div class="var-item"><span class="var-name">Falkbeer Counter</span><span class="var-moves">2...d5</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -71,6 +100,11 @@
             <h3>Queen's Gambit <span class="badge intermediate">Intermediate</span></h3>
             <p>White offers a pawn to gain control of the centre. One of the most strategically profound openings in chess, favoured by world champions for over a century.</p>
             <div class="moves">1. d4 d5 2. c4</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">QGD — Classical</span><span class="var-moves">2...e6</span></div>
+              <div class="var-item"><span class="var-name">QGA</span><span class="var-moves">2...dxc4</span></div>
+              <div class="var-item"><span class="var-name">Slav Defence</span><span class="var-moves">2...c6</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -78,6 +112,10 @@
             <h3>London System <span class="badge beginner">Beginner</span></h3>
             <p>Solid, reliable, and easy to learn. The London requires less theoretical knowledge than most openings, making it ideal for players who want results without memorisation.</p>
             <div class="moves">1. d4 d5 2. Bf4 Nf6 3. e3</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Barry Attack</span><span class="var-moves">vs King's Indian</span></div>
+              <div class="var-item"><span class="var-name">London vs. KID</span><span class="var-moves">3...g6 lines</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -85,6 +123,52 @@
             <h3>Catalan Opening <span class="badge advanced">Advanced</span></h3>
             <p>A sophisticated blend of the Queen's Gambit and the Réti. White fianchettoes the king's bishop, applying long-term pressure along the a1–h8 diagonal.</p>
             <div class="moves">1. d4 Nf6 2. c4 e6 3. g3</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Open Catalan</span><span class="var-moves">3...dxc4</span></div>
+              <div class="var-item"><span class="var-name">Closed Catalan</span><span class="var-moves">3...d5</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- NEW White Openings -->
+        <p class="section-label">More White Systems</p>
+        <hr class="section-rule">
+
+        <div class="three-col" style="margin-bottom:3rem;">
+
+          <div class="card">
+            <div class="card-tag">e4 Opening</div>
+            <h3>Vienna Game <span class="badge intermediate">Intermediate</span></h3>
+            <p>A flexible and aggressive system. White develops the queen's knight before the king's, retaining the option of f4 to attack or c3 to build a solid centre. Regaining popularity at grandmaster level.</p>
+            <div class="moves">1. e4 e5 2. Nc3</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Vienna Gambit</span><span class="var-moves">2...Nc6 3.f4</span></div>
+              <div class="var-item"><span class="var-name">Frankenstein-Dracula</span><span class="var-moves">2...Nf6 3.Bc4 Nxe4</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">d4 Opening</div>
+            <h3>Nimzo-Indian Defence <span class="badge advanced">Advanced</span></h3>
+            <p>Black pins White's knight before it can dominate the centre, attacking the pawn structure rather than fighting directly for e4. One of the most theoretically rich openings ever devised.</p>
+            <div class="moves">1. d4 Nf6 2. c4 e6 3. Nc3 Bb4</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Classical (4.e3)</span><span class="var-moves">Qs-side build</span></div>
+              <div class="var-item"><span class="var-name">Rubinstein (4.e3 0-0)</span><span class="var-moves">Solid structure</span></div>
+              <div class="var-item"><span class="var-name">Sämisch (4.a3)</span><span class="var-moves">Force the bishop pair</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Flank Opening</div>
+            <h3>English Opening <span class="badge intermediate">Intermediate</span></h3>
+            <p>A hypermodern, flexible first move that fights for the centre with pieces rather than pawns. Transposes into countless systems. Favoured by Karpov and used regularly at the elite level today.</p>
+            <div class="moves">1. c4</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Symmetrical English</span><span class="var-moves">1...c5</span></div>
+              <div class="var-item"><span class="var-name">English vs. KID setup</span><span class="var-moves">1...Nf6 2.Nc3 g6</span></div>
+            </div>
           </div>
 
         </div>
@@ -99,6 +183,11 @@
             <h3>Sicilian Defence <span class="badge advanced">Advanced</span></h3>
             <p>The most popular and complex reply to 1.e4. Black fights for the initiative from the first move, accepting an asymmetrical pawn structure in exchange for dynamic counterplay.</p>
             <div class="moves">1. e4 c5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Najdorf</span><span class="var-moves">...a6 after ...d6</span></div>
+              <div class="var-item"><span class="var-name">Dragon</span><span class="var-moves">...g6 fianchetto</span></div>
+              <div class="var-item"><span class="var-name">Scheveningen</span><span class="var-moves">...e6 structure</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -106,6 +195,11 @@
             <h3>French Defence <span class="badge intermediate">Intermediate</span></h3>
             <p>A solid, strategic choice. Black voluntarily concedes space with the intention of counterattacking White's centre. The bad light-squared bishop is the eternal trade-off.</p>
             <div class="moves">1. e4 e6 2. d4 d5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Winawer</span><span class="var-moves">3.Nc3 Bb4</span></div>
+              <div class="var-item"><span class="var-name">Tarrasch</span><span class="var-moves">3.Nd2</span></div>
+              <div class="var-item"><span class="var-name">Classical</span><span class="var-moves">3.Nc3 Nf6</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -113,6 +207,11 @@
             <h3>Caro-Kann Defence <span class="badge intermediate">Intermediate</span></h3>
             <p>The thinking player's alternative to the French. Black challenges the centre immediately and avoids the cramped light-squared bishop — the result is a solid, active game.</p>
             <div class="moves">1. e4 c6 2. d4 d5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Classical</span><span class="var-moves">3.Nc3 dxe4</span></div>
+              <div class="var-item"><span class="var-name">Advance</span><span class="var-moves">3.e5</span></div>
+              <div class="var-item"><span class="var-name">Fantasy Variation</span><span class="var-moves">3.f3</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -120,6 +219,10 @@
             <h3>Pirc Defence <span class="badge advanced">Advanced</span></h3>
             <p>Black deliberately cedes the centre in the first few moves, choosing instead to attack it from the flanks. A hypermodern approach that demands accurate counterplay.</p>
             <div class="moves">1. e4 d6 2. d4 Nf6 3. Nc3 g6</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Austrian Attack</span><span class="var-moves">4.f4</span></div>
+              <div class="var-item"><span class="var-name">Classical System</span><span class="var-moves">4.Nf3</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -127,6 +230,10 @@
             <h3>Scandinavian Defence <span class="badge beginner">Beginner</span></h3>
             <p>Immediate central tension. Black challenges White's e4 pawn at once and aims for quick piece activity, at the cost of some development time for the queen.</p>
             <div class="moves">1. e4 d5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Main Line</span><span class="var-moves">2.exd5 Qxd5 3.Nc3</span></div>
+              <div class="var-item"><span class="var-name">Modern 3...Qd6</span><span class="var-moves">vs Nc3</span></div>
+            </div>
           </div>
 
           <div class="card">
@@ -134,6 +241,53 @@
             <h3>King's Indian Defence <span class="badge advanced">Advanced</span></h3>
             <p>Fischer, Kasparov, and Bronstein all adored the King's Indian. Black allows White to build a centre then launches a ferocious kingside attack. High-risk, high-reward chess.</p>
             <div class="moves">1. d4 Nf6 2. c4 g6 3. Nc3 Bg7</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Classical</span><span class="var-moves">...e5 vs d4/e4</span></div>
+              <div class="var-item"><span class="var-name">Sämisch</span><span class="var-moves">5.f3 Black's e5</span></div>
+              <div class="var-item"><span class="var-name">Four Pawns Attack</span><span class="var-moves">5.f4</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- NEW: Modern/Hypermodern section -->
+        <p class="section-label">Modern & Hypermodern Responses</p>
+        <hr class="section-rule">
+
+        <div class="three-col" style="margin-bottom:3rem;">
+
+          <div class="card">
+            <div class="card-tag">Modern Defence</div>
+            <h3>Modern Defence <span class="badge intermediate">Intermediate</span></h3>
+            <p>Black fianchettoes the king's bishop and allows White to build any centre they wish — then immediately starts to undermine it. A flexible, transpositional weapon suited to players who prefer originality over memorisation.</p>
+            <div class="moves">1. e4 g6 2. d4 Bg7</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Robatsch Variation</span><span class="var-moves">3.Nc3 d6</span></div>
+              <div class="var-item"><span class="var-name">Averbakh System</span><span class="var-moves">3.Nc3 c5</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Grünfeld</div>
+            <h3>Grünfeld Defence <span class="badge advanced">Advanced</span></h3>
+            <p>One of chess's most theoretically demanding openings. Black allows White to occupy the entire centre with pawns, then attacks it with every piece — starting with d5. Kasparov's weapon of choice against 1.d4.</p>
+            <div class="moves">1. d4 Nf6 2. c4 g6 3. Nc3 d5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Exchange Variation</span><span class="var-moves">4.cxd5 Nxd5</span></div>
+              <div class="var-item"><span class="var-name">Russian System</span><span class="var-moves">7.Be3 Nc6 8.Qd2</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Dutch Defence</div>
+            <h3>Dutch Defence <span class="badge intermediate">Intermediate</span></h3>
+            <p>Black fights for the e4 square from move one and seeks early kingside activity. Asymmetrical from the start — Botvinnik and Bronstein both employed it to create unbalanced positions where creativity trumps theory.</p>
+            <div class="moves">1. d4 f5</div>
+            <div class="variation-list">
+              <div class="var-item"><span class="var-name">Stonewall</span><span class="var-moves">...d5/e6/c6</span></div>
+              <div class="var-item"><span class="var-name">Leningrad</span><span class="var-moves">...g6/Bg7</span></div>
+              <div class="var-item"><span class="var-name">Classical</span><span class="var-moves">...e6/Nf6</span></div>
+            </div>
           </div>
 
         </div>
@@ -150,47 +304,23 @@
 
         <div class="sidebar-section">
           <h4>Most Played Openings</h4>
-          <a class="sidebar-item" href="#">
-            <span class="num">01</span>
-            <span class="title">Sicilian Defence — 1. e4 c5</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">02</span>
-            <span class="title">Queen's Gambit — 1. d4 d5 2. c4</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">03</span>
-            <span class="title">Ruy Lopez — 1. e4 e5 2. Nf3 Nc6 3. Bb5</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">04</span>
-            <span class="title">Italian Game — 1. e4 e5 2. Nf3 Nc6 3. Bc4</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">05</span>
-            <span class="title">London System — 1. d4 d5 2. Bf4</span>
-          </a>
+          <a class="sidebar-item" href="#"><span class="num">01</span><span class="title">Sicilian Defence — 1. e4 c5</span></a>
+          <a class="sidebar-item" href="#"><span class="num">02</span><span class="title">Queen's Gambit — 1. d4 d5 2. c4</span></a>
+          <a class="sidebar-item" href="#"><span class="num">03</span><span class="title">Ruy Lopez — 1. e4 e5 2. Nf3 Nc6 3. Bb5</span></a>
+          <a class="sidebar-item" href="#"><span class="num">04</span><span class="title">Italian Game — 1. e4 e5 2. Nf3 Nc6 3. Bc4</span></a>
+          <a class="sidebar-item" href="#"><span class="num">05</span><span class="title">London System — 1. d4 d5 2. Bf4</span></a>
+          <a class="sidebar-item" href="#"><span class="num">06</span><span class="title">Nimzo-Indian — 1. d4 Nf6 2. c4 e6 3. Nc3 Bb4</span></a>
+          <a class="sidebar-item" href="#"><span class="num">07</span><span class="title">King's Indian Defence — 1. d4 Nf6 2. c4 g6</span></a>
         </div>
 
         <div class="sidebar-section">
           <h4>Beginner Recommendations</h4>
-          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.75rem;">Start with these openings before exploring complex systems.</p>
-          <a class="sidebar-item" href="#">
-            <span class="num">♟</span>
-            <span class="title">Italian Game (White)</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">♟</span>
-            <span class="title">London System (White)</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">♟</span>
-            <span class="title">Caro-Kann (Black vs e4)</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">♟</span>
-            <span class="title">Queen's Gambit Declined (Black)</span>
-          </a>
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.75rem;">Start with these before exploring complex systems.</p>
+          <a class="sidebar-item" href="#"><span class="num">♟</span><span class="title">Italian Game (White)</span></a>
+          <a class="sidebar-item" href="#"><span class="num">♟</span><span class="title">London System (White)</span></a>
+          <a class="sidebar-item" href="#"><span class="num">♟</span><span class="title">Caro-Kann (Black vs e4)</span></a>
+          <a class="sidebar-item" href="#"><span class="num">♟</span><span class="title">Queen's Gambit Declined (Black)</span></a>
+          <a class="sidebar-item" href="#"><span class="num">♟</span><span class="title">Scandinavian (Black vs e4)</span></a>
         </div>
 
         <div class="sidebar-section">
@@ -200,7 +330,18 @@
             <strong>2.</strong> Develop all minor pieces before moving any piece twice.<br>
             <strong>3.</strong> Castle early to safeguard the king.<br>
             <strong>4.</strong> Connect the rooks on the back rank.<br>
-            <strong>5.</strong> Do not bring the queen out too early.
+            <strong>5.</strong> Do not bring the queen out too early.<br>
+            <strong>6.</strong> Do not move the same piece twice in the opening without good reason.
+          </p>
+        </div>
+
+        <div class="sidebar-section">
+          <h4>Recommended Reading</h4>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.75;">
+            <em>My System</em> — Aron Nimzowitsch<br>
+            <em>Zurich 1953</em> — David Bronstein<br>
+            <em>How to Reassess Your Chess</em> — Jeremy Silman<br>
+            <em>The Life &amp; Games of Mikhail Tal</em> — Mikhail Tal
           </p>
         </div>
 
@@ -215,6 +356,11 @@
     <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
     <p style="margin-top:0.5rem; color:#5a5040;">© 2025 Chess-X. All rights reserved.</p>
   </footer>
+
+  <script>
+    const t = document.getElementById('banner-tiles');
+    for (let i = 0; i < 80; i++) { const s = document.createElement('span'); t.appendChild(s); }
+  </script>
 
 </body>
 </html>

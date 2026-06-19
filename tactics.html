@@ -8,14 +8,30 @@
 </head>
 <body>
 
+  <!-- ══ ANIMATED BANNER ══ -->
+  <header class="site-banner">
+    <div class="banner-tiles" id="banner-tiles"></div>
+    <div class="banner-inner">
+      <div class="banner-left">
+        <span class="banner-est">Est. 2025 · Vol. I</span>
+        <div class="banner-rule"></div>
+        <div class="banner-rule-thin"></div>
+        <div class="banner-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="banner-wordmark">
+        <span class="banner-title">CHESS<span class="x-accent">-X</span></span>
+        <span class="banner-tagline">The Journal of Chess Mastery</span>
+      </div>
+      <div class="banner-right">
+        <span class="banner-king">♔</span>
+        <div class="banner-king-shadow"></div>
+      </div>
+    </div>
+  </header>
+
   <div class="masthead">
     <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis</span>
     <span class="masthead-date">Est. 2025 &nbsp;·&nbsp; Volume I</span>
-  </div>
-
-  <div class="logo-bar">
-    <a href="index.html" class="logo">CHESS<span>-X</span></a>
-    <div class="logo-sub">The Journal of Chess Mastery</div>
   </div>
 
   <nav class="main-nav">
@@ -137,10 +153,60 @@
 
         </div>
 
+        <!-- NEW: Sacrificial Patterns -->
+        <p class="section-label">Sacrificial Attacks</p>
+        <hr class="section-rule">
+
+        <div class="three-col" style="margin-bottom:3rem;">
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>Greek Gift Sacrifice <span class="badge intermediate">Intermediate</span></h3>
+            <p>White sacrifices the bishop on h7, driving the king into the open and launching a coordinated attack with knight and queen. One of the most famous and frequently occurring combinations in club chess.</p>
+            <div class="moves">Pattern: Bxh7+ Kxh7 Ng5+</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>Exchange Sacrifice <span class="badge advanced">Advanced</span></h3>
+            <p>Surrendering a rook for a minor piece to gain positional compensation — often an outpost, a powerful bishop pair, or a lasting initiative. Tal and Petrosian both mastered this art in very different styles.</p>
+            <div class="moves">Pattern: Rxc3 bxc3 — structural gain</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>Queen Sacrifice <span class="badge advanced">Advanced</span></h3>
+            <p>The most dramatic of all sacrifices. Giving up the queen for two minor pieces or a rook plus pawn is sometimes correct — but the decision demands precise calculation and an unflinching nerve.</p>
+            <div class="moves">Effect: Material for initiative</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>The Hook Mate <span class="badge intermediate">Intermediate</span></h3>
+            <p>A rook, knight, and pawn combine in a classic mating pattern on the side of the board. The opponent's own pawn hooks the king in, leaving no escape. Appears frequently in middlegame attacks.</p>
+            <div class="moves">Pattern: Rh8# with Ng6 + h-pawn</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>Clearance Sacrifice <span class="badge advanced">Advanced</span></h3>
+            <p>A piece is sacrificed not to win material but purely to vacate a square or open a file for a more powerful piece. The combination works because what comes next is unstoppable.</p>
+            <div class="moves">Effect: Clear the path</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Sacrifice</div>
+            <h3>Pawn Breakthrough <span class="badge intermediate">Intermediate</span></h3>
+            <p>In an endgame or advanced middlegame position, a pawn sacrifice blows open a blocked pawn chain, creating a passed pawn that the opponent cannot stop. A technique every player must master.</p>
+            <div class="moves">Effect: Create passed pawn</div>
+          </div>
+
+        </div>
+
         <p class="section-label">Checkmating Patterns</p>
         <hr class="section-rule">
 
-        <div class="three-col" style="margin-bottom:2rem;">
+        <div class="three-col" style="margin-bottom:3rem;">
 
           <div class="card">
             <div class="card-tag">Checkmate</div>
@@ -180,6 +246,56 @@
 
         </div>
 
+        <!-- NEW: Endgame Tactics -->
+        <p class="section-label">Endgame Tactics</p>
+        <hr class="section-rule">
+
+        <div class="three-col" style="margin-bottom:2rem;">
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Stalemate Trick <span class="badge intermediate">Intermediate</span></h3>
+            <p>The defender, facing inevitable loss, sacrifices remaining material to leave the king with no legal moves. A resourceful trick that saves countless lost positions — and one every attacker must guard against at all times.</p>
+            <div class="moves">Defensive resource: Induce stalemate</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Underpromotion <span class="badge advanced">Advanced</span></h3>
+            <p>Instead of promoting a pawn to a queen, a player chooses a rook, bishop, or knight. Underpromotion to a knight is the most common — it can give check that a queen cannot, creating a fork or mating net.</p>
+            <div class="moves">Effect: Unexpected piece, new threat</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Shouldering <span class="badge intermediate">Intermediate</span></h3>
+            <p>The attacking king uses geometry to block the defending king from reaching a critical square, effectively "shouldering" it aside. A pure king manoeuvre that does not involve captures — subtle and decisive.</p>
+            <div class="moves">Effect: King cuts off king</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Triangulation <span class="badge advanced">Advanced</span></h3>
+            <p>The king moves in a triangle to lose a tempo, transferring the obligation to move to the opponent and placing them in zugzwang. Requires more than one tempo — only possible when the opponent's king cannot mirror the path.</p>
+            <div class="moves">Effect: Lose a tempo deliberately</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Rook Skewer in Endings <span class="badge intermediate">Intermediate</span></h3>
+            <p>In rook endings, attacking the king forces it to step aside, allowing capture of the pawn behind it. More complex than in the middlegame — the endgame context makes timing and king position critical.</p>
+            <div class="moves">Key piece: Rook</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Endgame Tactic</div>
+            <h3>Fortress Construction <span class="badge advanced">Advanced</span></h3>
+            <p>The weaker side builds an impregnable defensive formation that cannot be broken even with overwhelming material advantage. The classic bishop-and-rook-pawn vs. wrong-coloured bishop draw is the most famous fortress in chess.</p>
+            <div class="moves">Effect: Draw from material deficit</div>
+          </div>
+
+        </div>
+
         <div class="pullquote">
           <p>"Tactics flow from a superior position. Without tactics, strategy is sterile."</p>
           <cite>— Savielly Tartakower</cite>
@@ -194,9 +310,9 @@
           <h4>Tactic of the Week</h4>
           <div class="card" style="margin-top:0.5rem;">
             <div class="card-tag">This Week</div>
-            <h3>Discovered Check</h3>
-            <p>White plays Nf6+, uncovering the bishop on g2 which now gives check — while the knight simultaneously attacks Black's queen on d7. Black cannot deal with both threats.</p>
-            <div class="moves">White wins the queen</div>
+            <h3>Greek Gift Sacrifice</h3>
+            <p>White opens with Bxh7+. The king steps forward, Ng5+ follows, and the queen storms to h5. The defence has just three moves and each is losing. A textbook kingside destruction.</p>
+            <div class="moves">Pattern: Bxh7+ Kxh7 Ng5+ Kg8 Qh5</div>
           </div>
         </div>
 
@@ -208,26 +324,22 @@
 
         <div class="sidebar-section">
           <h4>Pattern Frequency</h4>
-          <a class="sidebar-item" href="#">
-            <span class="num">01</span>
-            <span class="title">Fork — Most common at club level</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">02</span>
-            <span class="title">Pin — Second most frequent</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">03</span>
-            <span class="title">Back Rank Mate — Wins many games</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">04</span>
-            <span class="title">Discovered Attack — High impact</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">05</span>
-            <span class="title">Skewer — Often overlooked</span>
-          </a>
+          <a class="sidebar-item" href="#"><span class="num">01</span><span class="title">Fork — Most common at club level</span></a>
+          <a class="sidebar-item" href="#"><span class="num">02</span><span class="title">Pin — Second most frequent</span></a>
+          <a class="sidebar-item" href="#"><span class="num">03</span><span class="title">Back Rank Mate — Wins many games</span></a>
+          <a class="sidebar-item" href="#"><span class="num">04</span><span class="title">Discovered Attack — High impact</span></a>
+          <a class="sidebar-item" href="#"><span class="num">05</span><span class="title">Greek Gift — Kingside destroyer</span></a>
+          <a class="sidebar-item" href="#"><span class="num">06</span><span class="title">Stalemate Trick — Saves lost games</span></a>
+        </div>
+
+        <div class="sidebar-section">
+          <h4>Endgame Tactic Quick Guide</h4>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.6;">
+            <strong>Stalemate:</strong> Always check if opponent can induce it.<br>
+            <strong>Underpromotion:</strong> Consider knight promotion for forks.<br>
+            <strong>Triangulation:</strong> Requires king on a different-coloured square cycle.<br>
+            <strong>Fortress:</strong> Identify drawing fortresses before giving up.
+          </p>
         </div>
 
       </aside>
@@ -241,6 +353,11 @@
     <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
     <p style="margin-top:0.5rem; color:#5a5040;">© 2025 Chess-X. All rights reserved.</p>
   </footer>
+
+  <script>
+    const t = document.getElementById('banner-tiles');
+    for (let i = 0; i < 80; i++) { const s = document.createElement('span'); t.appendChild(s); }
+  </script>
 
 </body>
 </html>

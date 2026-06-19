@@ -8,19 +8,34 @@
 </head>
 <body>
 
-  <!-- Masthead -->
+  <!-- ══ ANIMATED BANNER ══ -->
+  <header class="site-banner">
+    <div class="banner-tiles" id="banner-tiles"></div>
+    <div class="banner-inner">
+      <div class="banner-left">
+        <span class="banner-est">Est. 2025 · Vol. I</span>
+        <div class="banner-rule"></div>
+        <div class="banner-rule-thin"></div>
+        <div class="banner-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="banner-wordmark">
+        <span class="banner-title">CHESS<span class="x-accent">-X</span></span>
+        <span class="banner-tagline">The Journal of Chess Mastery</span>
+      </div>
+      <div class="banner-right">
+        <span class="banner-king">♔</span>
+        <div class="banner-king-shadow"></div>
+      </div>
+    </div>
+  </header>
+
   <div class="masthead">
     <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis</span>
     <span class="masthead-date">Est. 2025 &nbsp;·&nbsp; Volume I</span>
   </div>
 
-  <!-- Logo Bar -->
-  <div class="logo-bar">
-    <a href="index.html" class="logo">CHESS<span>-X</span></a>
-    <div class="logo-sub">The Journal of Chess Mastery</div>
-  </div>
-
-  <!-- Navigation -->
   <nav class="main-nav">
     <a href="index.html" class="active">Home</a>
     <a href="openings.html">Openings</a>
@@ -29,7 +44,6 @@
     <a href="blog.html">Blog</a>
   </nav>
 
-  <!-- Main Content -->
   <div class="page-wrapper">
 
     <p class="section-label">Today's Edition</p>
@@ -37,7 +51,6 @@
 
     <div class="hero-grid">
 
-      <!-- Left Column -->
       <div class="side-stories">
         <div class="side-story">
           <div class="card-tag">Opening Theory</div>
@@ -59,15 +72,10 @@
         </div>
       </div>
 
-      <!-- Divider -->
       <div class="col-divider"></div>
 
-      <!-- Centre Column (Main Story) -->
       <div class="hero-main-story">
-
-        <!-- Mini Chess Board Decoration -->
         <div class="chess-deco" id="deco-board"></div>
-
         <div class="card-tag">Featured</div>
         <h2>What the Opening Tells You About the Endgame</h2>
         <div class="deck">
@@ -79,10 +87,8 @@
         <a href="blog.html" class="read-more">Continue Reading →</a>
       </div>
 
-      <!-- Divider -->
       <div class="col-divider"></div>
 
-      <!-- Right Column -->
       <div class="side-stories">
         <div class="side-story">
           <div class="card-tag">Grand Masters</div>
@@ -102,6 +108,43 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- ══ RECENT MATCHES ══ -->
+    <div class="recent-matches">
+      <p class="section-label">Recent Matches</p>
+      <hr class="section-rule">
+      <div class="recent-matches-grid">
+
+        <div class="match-card">
+          <div class="match-date">June 2025</div>
+          <div class="match-event">Norway Chess · Round 7</div>
+          <div class="match-players">Carlsen vs. Gukesh</div>
+          <div class="match-result">1 – 0</div>
+          <div class="match-opening">Nimzo-Indian Defence, Classical</div>
+          <div class="match-desc">Carlsen converts a subtle queen endgame advantage in 58 moves, demonstrating why his technique remains peerless even outside competitive classical chess.</div>
+        </div>
+
+        <div class="match-card">
+          <div class="match-date">May 2025</div>
+          <div class="match-event">Candidates Tournament · Toronto</div>
+          <div class="match-players">Praggnanandhaa vs. Caruana</div>
+          <div class="match-result">½ – ½</div>
+          <div class="match-opening">Ruy Lopez, Berlin Defence</div>
+          <div class="match-desc">A Berlin endgame of extreme precision. Pragg holds the draw with a model defensive performance, keeping Caruana's outside passed pawn permanently at bay.</div>
+        </div>
+
+        <div class="match-card">
+          <div class="match-date">April 2025</div>
+          <div class="match-event">Superbet Classic · Bucharest</div>
+          <div class="match-players">Nepomniachtchi vs. Firouzja</div>
+          <div class="match-result">0 – 1</div>
+          <div class="match-opening">Sicilian Defence, Najdorf</div>
+          <div class="match-desc">Firouzja sacrifices the exchange on move 22 in a sharp Najdorf and generates an attack that Nepomniachtchi cannot weather. A game destined for the anthologies.</div>
+        </div>
+
+      </div>
+      <a href="blog.html" class="read-more" style="margin-top:1.2rem; display:inline-block;">All Match Reports →</a>
     </div>
 
     <!-- Feature Strip -->
@@ -138,7 +181,6 @@
 
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-logo">CHESS<span>-X</span></div>
     <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
@@ -146,7 +188,14 @@
   </footer>
 
   <script>
-    // Draw decorative chess board
+    // Checkerboard banner tiles
+    const tilesEl = document.getElementById('banner-tiles');
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('span');
+      tilesEl.appendChild(s);
+    }
+
+    // Decorative chess board
     const board = document.getElementById('deco-board');
     const pieces = [
       ['♜','♞','♝','♛','♚','♝','♞','♜'],

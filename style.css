@@ -16,7 +16,6 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
@@ -28,7 +27,6 @@ body {
   min-height: 100vh;
 }
 
-/* ── Noise texture overlay ── */
 body::before {
   content: '';
   position: fixed;
@@ -39,7 +37,188 @@ body::before {
   opacity: 0.5;
 }
 
-/* ── Masthead ── */
+/* ══════════════════════════════════════════
+   ANIMATED BANNER
+══════════════════════════════════════════ */
+.site-banner {
+  position: relative;
+  width: 100%;
+  background: #0d0d0d;
+  overflow: hidden;
+  border-bottom: 3px solid var(--gold);
+}
+
+.banner-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 160px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Checkerboard BG tiles */
+.banner-tiles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.banner-tiles span {
+  display: block;
+}
+
+.banner-tiles span:nth-child(odd) { background: #fff; }
+
+/* Left: EST badge + rule lines */
+.banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.banner-est {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #888;
+  animation: bannerFadeUp 1s ease-out 0.2s both;
+}
+
+.banner-rule {
+  width: 140px;
+  height: 1px;
+  background: var(--gold);
+  animation: bannerExpand 1.2s ease-out 0.3s both;
+  transform-origin: left;
+}
+
+.banner-rule-thin {
+  width: 100px;
+  height: 1px;
+  background: #444;
+  animation: bannerExpand 1.2s ease-out 0.5s both;
+  transform-origin: left;
+}
+
+/* Centre: CHESS-X wordmark */
+.banner-wordmark {
+  text-align: center;
+  animation: bannerFadeUp 1s ease-out 0.1s both;
+}
+
+.banner-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  color: #f5f0e8;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  display: block;
+}
+
+.banner-title .x-accent {
+  color: var(--gold);
+  animation: goldPulse 3s ease-in-out 1.5s infinite;
+}
+
+.banner-tagline {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #888;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0.3rem;
+  animation: bannerFadeUp 1s ease-out 0.6s both;
+}
+
+/* Right: floating king piece */
+.banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.banner-king {
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: #e8d9b5;
+  text-shadow: 0 0 30px rgba(200,168,75,0.3);
+  animation: kingFloat 3s ease-in-out infinite, bannerFadeUp 1s ease-out 0.4s both;
+  display: block;
+  line-height: 1;
+}
+
+.banner-king-shadow {
+  width: 40px;
+  height: 6px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%);
+  animation: shadowPulse 3s ease-in-out infinite;
+  border-radius: 50%;
+}
+
+/* Banner dots */
+.banner-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.5rem;
+  animation: bannerFadeUp 1s ease-out 0.7s both;
+}
+
+.banner-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Keyframes */
+@keyframes bannerFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bannerExpand {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { color: var(--gold); }
+  50%       { color: #f0c87a; text-shadow: 0 0 20px rgba(200,168,75,0.6); }
+}
+
+@keyframes kingFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes shadowPulse {
+  0%, 100% { transform: scaleX(1);   opacity: 0.5; }
+  50%       { transform: scaleX(0.6); opacity: 0.2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-wordmark, .banner-est, .banner-rule, .banner-rule-thin,
+  .banner-tagline, .banner-king, .banner-dots {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .banner-title .x-accent { animation: none; }
+}
+
+/* ── Masthead (kept below banner) ── */
 .masthead {
   background-color: var(--ink);
   padding: 0.5rem 2rem;
@@ -65,48 +244,8 @@ body::before {
   text-transform: uppercase;
 }
 
-/* ── Logo ── */
-.logo-bar {
-  text-align: center;
-  padding: 2rem 2rem 0.5rem;
-  background-color: var(--cream);
-  border-bottom: 1px solid var(--rule);
-  position: relative;
-}
-
-.logo-bar::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background: repeating-linear-gradient(90deg, var(--ink) 0px, var(--ink) 4px, transparent 4px, transparent 8px);
-  margin-top: 0.5rem;
-}
-
-.logo {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 900;
-  color: var(--ink);
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-}
-
-.logo span {
-  color: var(--accent);
-}
-
-.logo-sub {
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
-  color: var(--muted);
-  font-size: 0.95rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-top: 0.25rem;
-}
+/* ── Logo Bar (hidden — replaced by banner) ── */
+.logo-bar { display: none; }
 
 /* ── Navigation ── */
 nav.main-nav {
@@ -207,7 +346,6 @@ nav.main-nav a.active {
   text-align: justify;
 }
 
-/* Drop cap */
 .hero-main-story p:first-of-type::first-letter {
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
@@ -278,7 +416,7 @@ nav.main-nav a.active {
 }
 .read-more:hover { color: var(--accent-dark); }
 
-/* ── Feature Strip (homepage bottom) ── */
+/* ── Feature Strip ── */
 .feature-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -293,10 +431,7 @@ nav.main-nav a.active {
   padding-top: 0.75rem;
 }
 
-.feature-card .icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
+.feature-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
 
 .feature-card h4 {
   font-family: 'Playfair Display', serif;
@@ -305,11 +440,7 @@ nav.main-nav a.active {
   margin-bottom: 0.35rem;
 }
 
-.feature-card p {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
+.feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
 .feature-card a {
   display: block;
@@ -318,6 +449,87 @@ nav.main-nav a.active {
   transition: opacity 0.2s;
 }
 .feature-card a:hover { opacity: 0.75; }
+
+/* ══════════════════════════════════════════
+   RECENT MATCHES STRIP (homepage)
+══════════════════════════════════════════ */
+.recent-matches {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--ink);
+}
+
+.recent-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.match-card {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 1.2rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card::after {
+  content: '♟';
+  position: absolute;
+  bottom: -10px;
+  right: 8px;
+  font-size: 4rem;
+  opacity: 0.06;
+  color: var(--gold);
+}
+
+.match-card .match-date {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.match-card .match-event {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.6rem;
+}
+
+.match-card .match-players {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5f0e8;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+.match-card .match-result {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+}
+
+.match-card .match-opening {
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--rule);
+  margin-top: 0.4rem;
+}
+
+.match-card .match-desc {
+  font-size: 0.82rem;
+  color: #a89e86;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
 
 /* ── Inner Page: Content Columns ── */
 .two-col {
@@ -332,7 +544,7 @@ nav.main-nav a.active {
   gap: 2rem;
 }
 
-/* ── Card (openings, endgames, tactics) ── */
+/* ── Card ── */
 .card {
   border: 1px solid var(--rule);
   background: var(--newsprint);
@@ -374,11 +586,7 @@ nav.main-nav a.active {
   line-height: 1.3;
 }
 
-.card p {
-  font-size: 0.9rem;
-  color: var(--ink-light);
-  line-height: 1.55;
-}
+.card p { font-size: 0.9rem; color: var(--ink-light); line-height: 1.55; }
 
 .card .moves {
   font-family: 'EB Garamond', serif;
@@ -391,9 +599,7 @@ nav.main-nav a.active {
 }
 
 /* ── Page Headline ── */
-.page-headline {
-  margin-bottom: 2.5rem;
-}
+.page-headline { margin-bottom: 2.5rem; }
 
 .page-headline h1 {
   font-family: 'Playfair Display', serif;
@@ -451,10 +657,7 @@ nav.main-nav a.active {
   font-size: 1.05rem;
 }
 
-.post p {
-  font-size: 0.97rem;
-  text-align: justify;
-}
+.post p { font-size: 0.97rem; text-align: justify; }
 
 .post p::first-letter {
   font-family: 'Playfair Display', serif;
@@ -464,6 +667,36 @@ nav.main-nav a.active {
   line-height: 0.8;
   margin: 0.1em 0.08em 0 0;
   color: var(--accent);
+}
+
+/* ── NEW: Match Analysis post style ── */
+.post.match-analysis {
+  background: var(--newsprint);
+  border: 1px solid var(--rule);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.post.match-analysis .post-meta { color: var(--gold); }
+
+.match-score-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.75rem 0;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.match-score-line .player { font-weight: 600; font-size: 0.95rem; }
+.match-score-line .score {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin: 0 auto;
 }
 
 /* ── Sidebar ── */
@@ -502,11 +735,7 @@ nav.main-nav a.active {
   min-width: 1.8rem;
 }
 
-.sidebar-item .title {
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
+.sidebar-item .title { font-size: 0.88rem; font-weight: 600; line-height: 1.4; }
 
 /* ── Quote / Highlight Box ── */
 .pullquote {
@@ -545,9 +774,42 @@ nav.main-nav a.active {
   margin-left: 0.5rem;
   vertical-align: middle;
 }
-.badge.beginner { color: #4a7c59; }
-.badge.intermediate { color: #c48c00; }
-.badge.advanced { color: var(--accent); }
+.badge.beginner    { color: #4a7c59; }
+.badge.intermediate{ color: #c48c00; }
+.badge.advanced    { color: var(--accent); }
+
+/* ── NEW: Opening variation sub-cards ── */
+.variation-list {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.6rem;
+}
+
+.variation-list .var-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 0.82rem;
+}
+
+.variation-list .var-item:last-child { border-bottom: none; }
+
+.variation-list .var-name { font-weight: 600; color: var(--ink-light); }
+.variation-list .var-moves { font-style: italic; color: var(--muted); font-size: 0.78rem; }
+
+/* ── NEW: Endgame position diagram placeholder ── */
+.position-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  padding: 0.2em 0.7em;
+  margin-bottom: 0.5rem;
+}
 
 /* ── Footer ── */
 footer {
@@ -571,6 +833,7 @@ footer::before {
 
 footer a { color: var(--gold); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
+
 footer .footer-logo {
   font-family: 'Cinzel', serif;
   font-size: 1.4rem;
@@ -588,12 +851,16 @@ footer .footer-logo span { color: var(--accent); }
   .two-col, .blog-grid { grid-template-columns: 1fr; }
   .sidebar { position: static; }
   .three-col { grid-template-columns: 1fr 1fr; }
+  .recent-matches-grid { grid-template-columns: 1fr; }
   nav.main-nav a { padding: 0.7rem 1rem; font-size: 0.72rem; }
+  .banner-right { display: none; }
+  .banner-left { display: none; }
+  .banner-inner { justify-content: center; }
 }
 
 @media (max-width: 580px) {
   .feature-strip { grid-template-columns: 1fr; }
   .three-col { grid-template-columns: 1fr; }
   nav.main-nav { flex-wrap: wrap; }
-  .logo { font-size: 2.5rem; }
+  .banner-title { font-size: 2.8rem; }
 }

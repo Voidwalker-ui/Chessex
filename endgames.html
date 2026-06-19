@@ -8,14 +8,30 @@
 </head>
 <body>
 
+  <!-- ══ ANIMATED BANNER ══ -->
+  <header class="site-banner">
+    <div class="banner-tiles" id="banner-tiles"></div>
+    <div class="banner-inner">
+      <div class="banner-left">
+        <span class="banner-est">Est. 2025 · Vol. I</span>
+        <div class="banner-rule"></div>
+        <div class="banner-rule-thin"></div>
+        <div class="banner-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="banner-wordmark">
+        <span class="banner-title">CHESS<span class="x-accent">-X</span></span>
+        <span class="banner-tagline">The Journal of Chess Mastery</span>
+      </div>
+      <div class="banner-right">
+        <span class="banner-king">♔</span>
+        <div class="banner-king-shadow"></div>
+      </div>
+    </div>
+  </header>
+
   <div class="masthead">
     <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis</span>
     <span class="masthead-date">Est. 2025 &nbsp;·&nbsp; Volume I</span>
-  </div>
-
-  <div class="logo-bar">
-    <a href="index.html" class="logo">CHESS<span>-X</span></a>
-    <div class="logo-sub">The Journal of Chess Mastery</div>
   </div>
 
   <nav class="main-nav">
@@ -39,16 +55,16 @@
 
       <div>
 
-        <p class="section-label">King & Pawn Endgames</p>
+        <p class="section-label">King &amp; Pawn Endgames</p>
         <hr class="section-rule">
 
-        <div class="three-col" style="margin-bottom: 3rem;">
+        <div class="three-col" style="margin-bottom:3rem;">
 
           <div class="card">
             <div class="card-tag">K+P Endgame</div>
             <h3>The Opposition <span class="badge beginner">Beginner</span></h3>
             <p>When two kings face each other with one square between them, the player who does <em>not</em> have to move holds "the opposition." This concept governs all king and pawn endgames.</p>
-            <div class="moves">Key concept: Direct & distant opposition</div>
+            <div class="moves">Key concept: Direct &amp; distant opposition</div>
           </div>
 
           <div class="card">
@@ -62,7 +78,28 @@
             <div class="card-tag">K+P Endgame</div>
             <h3>Corresponding Squares <span class="badge advanced">Advanced</span></h3>
             <p>A deep concept in complex king and pawn endgames. Corresponding squares define a hidden geometry that determines who can access which key squares first.</p>
-            <div class="moves">Key concept: Zugzwang & mapping</div>
+            <div class="moves">Key concept: Zugzwang &amp; mapping</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">K+P Endgame</div>
+            <h3>Key Squares <span class="badge intermediate">Intermediate</span></h3>
+            <p>Each pawn has a set of "key squares" — the squares the king must reach to guarantee promotion. For a pawn on e5, those squares are d7, e7, and f7. King activation begins with identifying them.</p>
+            <div class="moves">Key concept: King penetration</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">K+P Endgame</div>
+            <h3>Trebuchet <span class="badge advanced">Advanced</span></h3>
+            <p>A mutual zugzwang in king and pawn endgames where both sides have an equal pawn. Whichever king is forced to move loses. A position of absolute mutual dependency — and great elegance.</p>
+            <div class="moves">Key concept: Mutual zugzwang</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">K+P Endgame</div>
+            <h3>Outside Passed Pawn <span class="badge intermediate">Intermediate</span></h3>
+            <p>A passed pawn on the flank acts as a decoy, drawing the enemy king away from the main battle while your own king invades on the other side. A strategically decisive weapon at all levels.</p>
+            <div class="moves">Key concept: Decoy &amp; invasion</div>
           </div>
 
         </div>
@@ -70,7 +107,7 @@
         <p class="section-label">Rook Endgames</p>
         <hr class="section-rule">
 
-        <div class="three-col" style="margin-bottom: 3rem;">
+        <div class="three-col" style="margin-bottom:3rem;">
 
           <div class="card">
             <div class="card-tag">Rook Endgame</div>
@@ -116,10 +153,39 @@
 
         </div>
 
+        <!-- NEW: Queen Endgames -->
+        <p class="section-label">Queen Endgames</p>
+        <hr class="section-rule">
+
+        <div class="three-col" style="margin-bottom:3rem;">
+
+          <div class="card">
+            <div class="card-tag">Queen Endgame</div>
+            <h3>Queen vs. Rook <span class="badge advanced">Advanced</span></h3>
+            <p>Theoretically won for the stronger side, but practically very difficult — the defending rook constantly gives checks and sets up stalemate traps. Requires systematic triangulation and king centralisation. Studied by Philidor himself.</p>
+            <div class="moves">Technique: Philidor's method</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Queen Endgame</div>
+            <h3>Queen vs. Pawn on 7th <span class="badge intermediate">Intermediate</span></h3>
+            <p>A queen normally defeats a passed pawn — except when that pawn is on the 7th rank, supported by its king, and is a bishop's or rook's pawn. The resulting fortress draws are essential knowledge for competitive players.</p>
+            <div class="moves">Technique: Forced stalemate / draw</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Queen Endgame</div>
+            <h3>Queen Endgame Principles <span class="badge intermediate">Intermediate</span></h3>
+            <p>Queen endgames are among the most complex and double-edged in chess. The stronger side should centralise the queen, activate the king, and avoid perpetual checks. Passed pawns become queens — so counting them matters.</p>
+            <div class="moves">Key principle: King safety first</div>
+          </div>
+
+        </div>
+
         <p class="section-label">Minor Piece Endgames</p>
         <hr class="section-rule">
 
-        <div class="three-col" style="margin-bottom:2rem;">
+        <div class="three-col" style="margin-bottom:3rem;">
 
           <div class="card">
             <div class="card-tag">Bishop Endgame</div>
@@ -140,6 +206,28 @@
             <h3>Bishop vs. Knight <span class="badge advanced">Advanced</span></h3>
             <p>Open positions favour the bishop; closed ones favour the knight. A player who understands this in the middlegame can steer the game to a winning endgame structure.</p>
             <div class="moves">Concept: Pawn structure</div>
+          </div>
+
+          <!-- NEW minor piece endgames -->
+          <div class="card">
+            <div class="card-tag">Bishop Endgame</div>
+            <h3>Same-Coloured Bishop Draw <span class="badge intermediate">Intermediate</span></h3>
+            <p>Even with same-coloured bishops, the weaker side can draw by placing all pawns on the opposite colour to the bishop, creating an impregnable defensive formation the stronger side cannot crack.</p>
+            <div class="moves">Concept: Wrong-colour blockade</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Knight Endgame</div>
+            <h3>Knight Outpost <span class="badge intermediate">Intermediate</span></h3>
+            <p>A knight planted on a central outpost — particularly d5, e5, or their equivalents — can be the decisive advantage in an endgame. Centralised knights reach every part of the board quickly; rim knights are a liability.</p>
+            <div class="moves">Concept: Centralisation</div>
+          </div>
+
+          <div class="card">
+            <div class="card-tag">Rook vs. Bishop</div>
+            <h3>Rook vs. Bishop + Pawn <span class="badge advanced">Advanced</span></h3>
+            <p>More complex than it appears. The bishop can defend actively and the rook must be careful about stalemate tricks. Zugzwang is a recurring theme — knowing the drawing zones is essential at high levels.</p>
+            <div class="moves">Concept: Bishop's defensive geometry</div>
           </div>
 
         </div>
@@ -169,26 +257,13 @@
 
         <div class="sidebar-section">
           <h4>Essential Studies</h4>
-          <a class="sidebar-item" href="#">
-            <span class="num">01</span>
-            <span class="title">Lucena Position — Rook endgame must-know</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">02</span>
-            <span class="title">Philidor Position — The drawing fortress</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">03</span>
-            <span class="title">King + Pawn vs King — Winning & drawing lines</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">04</span>
-            <span class="title">Saavedra Position — The underpromotion miracle</span>
-          </a>
-          <a class="sidebar-item" href="#">
-            <span class="num">05</span>
-            <span class="title">Queen vs Rook — Philidor's position</span>
-          </a>
+          <a class="sidebar-item" href="#"><span class="num">01</span><span class="title">Lucena Position — Rook endgame must-know</span></a>
+          <a class="sidebar-item" href="#"><span class="num">02</span><span class="title">Philidor Position — The drawing fortress</span></a>
+          <a class="sidebar-item" href="#"><span class="num">03</span><span class="title">King + Pawn vs King — Winning &amp; drawing lines</span></a>
+          <a class="sidebar-item" href="#"><span class="num">04</span><span class="title">Saavedra Position — The underpromotion miracle</span></a>
+          <a class="sidebar-item" href="#"><span class="num">05</span><span class="title">Queen vs Rook — Philidor's method</span></a>
+          <a class="sidebar-item" href="#"><span class="num">06</span><span class="title">Trebuchet — Mutual zugzwang</span></a>
+          <a class="sidebar-item" href="#"><span class="num">07</span><span class="title">Outside passed pawn technique</span></a>
         </div>
 
         <div class="sidebar-section">
@@ -197,7 +272,8 @@
             <em>Silman's Complete Endgame Course</em> — Jeremy Silman<br>
             <em>Dvoretsky's Endgame Manual</em> — Mark Dvoretsky<br>
             <em>100 Endgames You Must Know</em> — Jesus de la Villa<br>
-            <em>Fundamental Chess Endings</em> — Karsten Müller
+            <em>Fundamental Chess Endings</em> — Karsten Müller<br>
+            <em>Endgame Strategy</em> — Mikhail Shereshevsky
           </p>
         </div>
 
@@ -212,6 +288,11 @@
     <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
     <p style="margin-top:0.5rem; color:#5a5040;">© 2025 Chess-X. All rights reserved.</p>
   </footer>
+
+  <script>
+    const t = document.getElementById('banner-tiles');
+    for (let i = 0; i < 80; i++) { const s = document.createElement('span'); t.appendChild(s); }
+  </script>
 
 </body>
 </html>
