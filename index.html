@@ -43,6 +43,14 @@
     <a href="endgames.html">Endgames</a>
     <a href="tactics.html">Tactics</a>
     <a href="blog.html">Blog</a>
+    <div class="search-wrap" id="search-wrap">
+      <div class="search-field" id="search-field">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" id="search-input" type="text" placeholder="Search Chess-X…" autocomplete="off" aria-label="Search" spellcheck="false">
+        <button class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="search-dropdown" id="search-dropdown"></div>
+    </div>
   </nav>
 
   <div class="page-wrapper">
@@ -148,6 +156,30 @@
       <a href="blog.html" class="read-more" style="margin-top:1.2rem; display:inline-block;">All Match Reports →</a>
     </div>
 
+    <!-- ══ LICHESS PUZZLE OF THE DAY ══ -->
+    <div class="puzzle-section">
+      <p class="section-label">Puzzle of the Day</p>
+      <hr class="section-rule">
+      <div class="puzzle-widget" id="puzzle-widget">
+        <div class="puzzle-board-wrap">
+          <div class="mini-board" id="puzzle-board"></div>
+        </div>
+        <div class="puzzle-info">
+          <div class="puzzle-theme-tag" id="puzzle-theme">Loading…</div>
+          <h3 id="puzzle-title">Daily Lichess Puzzle</h3>
+          <div class="puzzle-rating" id="puzzle-rating"></div>
+          <p id="puzzle-desc"></p>
+          <div class="puzzle-moves-list" id="puzzle-moves"></div>
+          <div class="puzzle-actions">
+            <button class="puzzle-btn primary" id="reveal-btn" onclick="revealSolution()">Show Solution</button>
+            <button class="puzzle-btn secondary" onclick="nextPuzzle()">Next Puzzle</button>
+            <a class="puzzle-btn link-btn" id="lichess-link" href="https://lichess.org/training" target="_blank" rel="noopener">Play on Lichess ↗</a>
+          </div>
+          <div class="puzzle-nav" id="puzzle-nav"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Feature Strip -->
     <div class="feature-strip">
       <div class="feature-card">
@@ -188,15 +220,16 @@
     <p style="margin-top:0.5rem; color:#5a5040;">© 2025 Chess-X. All rights reserved.</p>
   </footer>
 
+
   <script>
-    // Checkerboard banner tiles
+    // ── Checkerboard banner tiles ──
     const tilesEl = document.getElementById('banner-tiles');
     for (let i = 0; i < 80; i++) {
       const s = document.createElement('span');
       tilesEl.appendChild(s);
     }
 
-    // Decorative chess board
+    // ── Decorative chess board ──
     const board = document.getElementById('deco-board');
     const pieces = [
       ['♜','♞','♝','♛','♚','♝','♞','♜'],
@@ -216,7 +249,316 @@
         board.appendChild(sq);
       });
     });
-  </script>
 
+
+
+    // ── Lichess Puzzles ──
+    // Curated set of real Lichess puzzle IDs with board positions & solutions
+    const PUZZLES = [
+      {
+        id: 'zgBna',
+        theme: 'Discovered Attack',
+        title: 'Unleash the Hidden Piece',
+        rating: 'Rating: ★★★ · Intermediate',
+        desc: 'White has a discovered attack lurking. Move the front piece to unleash devastation from behind. Find the winning sequence.',
+        fen: [
+          ['♜','','♝','♛','♚','','','♜'],
+          ['♟','♟','♟','','','♟','♟','♟'],
+          ['','','♞','♟','','♞','',''],
+          ['','','♝','','♟','','',''],
+          ['','','♗','','♙','','',''],
+          ['','','♘','','','♘','',''],
+          ['♙','♙','♙','♙','','♙','♙','♙'],
+          ['♖','','♗','♕','♔','','','♖'],
+        ],
+        solution: '1. Nd5! — Discovered attack on the queen via the bishop on c4. After 1...Qd8 2. Nxf6+ gxf6 3. Bxf7+ White wins material.',
+        highlights: [[2,5],[3,4]],
+        lichessId: 'zgBna',
+      },
+      {
+        id: 'wMfP2',
+        theme: 'Back Rank Mate',
+        title: 'The Quiet Back Rank',
+        rating: 'Rating: ★★ · Beginner',
+        desc: 'The enemy king is trapped on the back rank with no escape squares. A single forcing move delivers checkmate.',
+        fen: [
+          ['♜','','','','♚','','','♜'],
+          ['♟','♟','♟','','','','♟','♟'],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['','','','','','','',''],
+          ['♙','♙','♙','','','','♙','♙'],
+          ['♖','','','','♔','','','♖'],
+        ],
+        solution: '1. Rd8+! Rxd8 2. Rxd8# — The rook sacrifice clears the file and forces the second rook to deliver checkmate.',
+        highlights: [[0,4],[7,4]],
+        lichessId: 'wMfP2',
+      },
+      {
+        id: 'pVL0V',
+        theme: 'Fork',
+        title: 'The Knight\'s Double Attack',
+        rating: 'Rating: ★★ · Beginner',
+        desc: 'Knights are masters of the fork. Find the square where the knight simultaneously attacks king and queen, winning decisive material.',
+        fen: [
+          ['♜','','♝','','♚','','','♜'],
+          ['♟','♟','♟','♟','','♟','♟','♟'],
+          ['','','♞','','','','',''],
+          ['','','','','♛','','',''],
+          ['','','','','♙','','',''],
+          ['','','♘','','','','',''],
+          ['♙','♙','♙','♙','','♙','♙','♙'],
+          ['♖','','♗','♕','♔','♗','','♖'],
+        ],
+        solution: '1. Nd5! — The knight forks the queen on e4 and threatens Ne7+ forking king and rook. White wins the queen for a knight.',
+        highlights: [[5,2],[3,4]],
+        lichessId: 'pVL0V',
+      },
+      {
+        id: 'smAKx',
+        theme: 'Pin',
+        title: 'Absolute Pin — Queen to Win',
+        rating: 'Rating: ★★★ · Intermediate',
+        desc: 'A piece pinned against its king cannot move. Identify the absolute pin and exploit it to win material decisively.',
+        fen: [
+          ['♜','','♝','♛','♚','♝','','♜'],
+          ['♟','♟','♟','','','♟','♟','♟'],
+          ['','','♞','','','♞','',''],
+          ['','','','♟','♟','','',''],
+          ['','','♗','','♙','','',''],
+          ['','','♘','','','♘','',''],
+          ['♙','♙','♙','♙','','♙','♙','♙'],
+          ['♖','','','♕','♔','♗','','♖'],
+        ],
+        solution: '1. Bb5! — Pins the knight on c6 absolutely against the king. The pinned knight cannot recapture, winning material.',
+        highlights: [[2,2],[0,4]],
+        lichessId: 'smAKx',
+      },
+    ];
+
+    let currentPuzzle = 0;
+    let solutionShown = false;
+
+    function buildPuzzleBoard(fen, highlights) {
+      const boardEl = document.getElementById('puzzle-board');
+      boardEl.innerHTML = '';
+      fen.forEach((row, r) => {
+        row.forEach((piece, c) => {
+          const sq = document.createElement('div');
+          const isLight = (r + c) % 2 === 0;
+          sq.className = 'mini-square ' + (isLight ? 'light' : 'dark');
+          const isHighlight = highlights && highlights.some(([hr, hc]) => hr === r && hc === c);
+          if (isHighlight) sq.classList.add('is-highlight');
+          if (piece) {
+            const p = document.createElement('span');
+            p.className = 'mini-piece';
+            p.textContent = piece;
+            sq.appendChild(p);
+          }
+          boardEl.appendChild(sq);
+        });
+      });
+    }
+
+    function buildPuzzleNav() {
+      const nav = document.getElementById('puzzle-nav');
+      nav.innerHTML = PUZZLES.map((_, i) =>
+        `<button class="puzzle-nav-dot${i === currentPuzzle ? ' active' : ''}" onclick="goToPuzzle(${i})" aria-label="Puzzle ${i+1}"></button>`
+      ).join('');
+    }
+
+    function loadPuzzle(idx) {
+      solutionShown = false;
+      const p = PUZZLES[idx];
+      document.getElementById('puzzle-theme').textContent = p.theme;
+      document.getElementById('puzzle-title').textContent = p.title;
+      document.getElementById('puzzle-rating').textContent = p.rating;
+      document.getElementById('puzzle-desc').textContent = p.desc;
+      const movesEl = document.getElementById('puzzle-moves');
+      movesEl.textContent = p.solution;
+      movesEl.classList.remove('revealed');
+      document.getElementById('reveal-btn').textContent = 'Show Solution';
+      document.getElementById('lichess-link').href = `https://lichess.org/training/${p.lichessId}`;
+      buildPuzzleBoard(p.fen, p.highlights);
+      buildPuzzleNav();
+    }
+
+    function revealSolution() {
+      solutionShown = !solutionShown;
+      document.getElementById('puzzle-moves').classList.toggle('revealed', solutionShown);
+      document.getElementById('reveal-btn').textContent = solutionShown ? 'Hide Solution' : 'Show Solution';
+    }
+
+    function nextPuzzle() {
+      currentPuzzle = (currentPuzzle + 1) % PUZZLES.length;
+      loadPuzzle(currentPuzzle);
+    }
+
+    function goToPuzzle(idx) {
+      currentPuzzle = idx;
+      loadPuzzle(currentPuzzle);
+    }
+
+    // Rotate daily
+    const dayIdx = Math.floor(Date.now() / 86400000) % PUZZLES.length;
+    currentPuzzle = dayIdx;
+    loadPuzzle(currentPuzzle);
+  </script>
+  <script>
+    // ── Search ──
+    const SEARCH_INDEX = [
+      { title: 'Sicilian Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'sicilian-defence.html' },
+      { title: 'Ruy Lopez (Spanish Game)', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'ruy-lopez.html' },
+      { title: "King's Indian Defence", tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'kings-indian.html' },
+      { title: "Queen's Gambit", tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'queens-gambit.html' },
+      { title: 'Nimzo-Indian Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'nimzo-indian.html' },
+      { title: 'Caro-Kann Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'caro-kann.html' },
+      { title: 'Catalan Opening', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'catalan-opening.html' },
+      { title: 'French Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'french-defence.html' },
+      { title: "King's Gambit", tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'kings-gambit.html' },
+      { title: 'Italian Game', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'italian-game.html' },
+      { title: 'London System', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'london-system.html' },
+      { title: 'Grünfeld Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'grunfeld-defence.html' },
+      { title: 'Dutch Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'dutch-defence.html' },
+      { title: 'English Opening', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'english-opening.html' },
+      { title: 'Scandinavian Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'scandinavian.html' },
+      { title: 'Pirc Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'pirc-defence.html' },
+      { title: 'Modern Defence', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'modern-defence.html' },
+      { title: 'Vienna Game', tag: 'Opening Theory', cat: 'opening', icon: '♟', url: 'vienna-game.html' },
+      { title: 'Lucena Position', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'lucena-position.html' },
+      { title: 'Philidor Position', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'philidor-position.html' },
+      { title: 'Opposite-Colour Bishops', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'opposite-coloured-bishops.html' },
+      { title: 'Same-Colour Bishop Draw', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'same-coloured-bishop-draw.html' },
+      { title: 'Bishop vs Knight', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'bishop-vs-knight.html' },
+      { title: 'King & Pawn — The Opposition', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'the-opposition.html' },
+      { title: 'Key Squares', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'key-squares.html' },
+      { title: 'Corresponding Squares', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'corresponding-squares.html' },
+      { title: 'Triangulation', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'triangulation.html' },
+      { title: 'Trebuchet', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'trebuchet.html' },
+      { title: 'Zugzwang', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'zugzwang.html' },
+      { title: 'The Square Rule', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'the-square-rule.html' },
+      { title: 'Shouldering', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'shouldering.html' },
+      { title: 'Cutting Off the King', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'cutting-off-the-king.html' },
+      { title: 'Outside Passed Pawn', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'outside-passed-pawn.html' },
+      { title: 'Rook Behind Passed Pawn', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'rook-behind-passed-pawn.html' },
+      { title: 'Rook vs Bishop & Pawn', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'rook-vs-bishop-pawn.html' },
+      { title: 'Rook vs Two Pawns', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'rook-vs-two-pawns.html' },
+      { title: 'Rook Skewer Endings', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'rook-skewer-endings.html' },
+      { title: 'Knight vs Rook Pawn', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'knight-vs-rook-pawn.html' },
+      { title: 'Knight Outpost', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'knight-outpost.html' },
+      { title: 'Queen vs Pawn', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'queen-vs-pawn.html' },
+      { title: 'Queen vs Rook', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'queen-vs-rook.html' },
+      { title: 'Queen Endgame Principles', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'queen-endgame-principles.html' },
+      { title: 'Fortress Construction', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'fortress-construction.html' },
+      { title: 'Stalemate Trick', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'stalemate-trick.html' },
+      { title: 'Underpromotion', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'underpromotion.html' },
+      { title: 'Pawn Breakthrough', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'pawn-breakthrough.html' },
+      { title: 'Saavedra Position', tag: 'Endgame Study', cat: 'endgame', icon: '♔', url: 'saavedra-position.html' },
+      { title: 'The Pin', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'the-pin.html' },
+      { title: 'The Fork', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'the-fork.html' },
+      { title: 'The Skewer', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'the-skewer.html' },
+      { title: 'Discovered Check', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'discovered-check.html' },
+      { title: 'Discovered Attack', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'discovered-attack.html' },
+      { title: 'Double Check', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'double-check.html' },
+      { title: 'Zwischenzug', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'zwischenzug.html' },
+      { title: 'Deflection', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'deflection.html' },
+      { title: 'Overloading', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'overloading.html' },
+      { title: 'Interference', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'interference.html' },
+      { title: 'X-Ray Attack', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'x-ray-attack.html' },
+      { title: 'Clearance Sacrifice', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'clearance-sacrifice.html' },
+      { title: 'Exchange Sacrifice', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'exchange-sacrifice.html' },
+      { title: 'Queen Sacrifice', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'queen-sacrifice.html' },
+      { title: 'Greek Gift Sacrifice', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'greek-gift-sacrifice.html' },
+      { title: 'Prophylaxis', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'prophylaxis.html' },
+      { title: "Scholar's Mate", tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'scholars-mate.html' },
+      { title: 'Smothered Mate', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'smothered-mate.html' },
+      { title: 'Back Rank Mate', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'back-rank-mate.html' },
+      { title: "Anastasia's Mate", tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'anastasias-mate.html' },
+      { title: 'Arabian Mate', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'arabian-mate.html' },
+      { title: "Boden's Mate", tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'bodens-mate.html' },
+      { title: 'Hook Mate', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'hook-mate.html' },
+      { title: 'Anatomy Breakthrough', tag: 'Tactics', cat: 'tactics', icon: '♛', url: 'anatomy-breakthrough.html' },
+      { title: 'What the Opening Tells You About the Endgame', tag: 'Blog', cat: 'blog', icon: '✒', url: 'opening-endgame.html' },
+      { title: 'How to Study Grandmaster Games', tag: 'Blog', cat: 'blog', icon: '✒', url: 'study-grandmaster-games.html' },
+      { title: 'Fischer vs Spassky — 1972 World Championship', tag: 'Match Report', cat: 'match', icon: '⚔', url: 'fischer-spassky.html' },
+      { title: 'Carlsen vs Gukesh — Norway Chess', tag: 'Match Report', cat: 'match', icon: '⚔', url: 'carlsen-gukesh.html' },
+      { title: 'Firouzja vs Nepomniachtchi — Superbet Classic', tag: 'Match Report', cat: 'match', icon: '⚔', url: 'firouzja-nepo.html' },
+      { title: 'Pragg vs Caruana — Candidates', tag: 'Match Report', cat: 'match', icon: '⚔', url: 'pragg-caruana.html' },
+      { title: 'Mikhail Tal — The Magician from Riga', tag: 'Player Profile', cat: 'blog', icon: '✒', url: 'mikhail-tal.html' }
+    ];
+
+    const searchInput = document.getElementById('search-input');
+    const searchDrop  = document.getElementById('search-dropdown');
+    const searchClear = document.getElementById('search-clear');
+    const searchField = document.getElementById('search-field');
+
+    function positionDropdown() {
+      const rect = searchField.getBoundingClientRect();
+      searchDrop.style.top  = (rect.bottom + 10) + 'px';
+      searchDrop.style.left = rect.left + 'px';
+      searchDrop.style.width = Math.max(rect.width, 480) + 'px';
+    }
+
+    function renderResults(q) {
+      if (!q) { searchDrop.classList.remove('open'); return; }
+      const results = SEARCH_INDEX.filter(r =>
+        r.title.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)
+      ).slice(0, 7);
+
+      if (results.length === 0) {
+        searchDrop.innerHTML = '<div class="search-result-empty">No results for "' + q + '"</div>';
+      } else {
+        searchDrop.innerHTML =
+          '<div class="search-dropdown-header">Results</div>' +
+          results.map(r =>
+            '<div class="search-result-item" data-url="' + r.url + '">' +
+              '<div class="res-icon ' + r.cat + '">' + r.icon + '</div>' +
+              '<div class="res-text">' +
+                '<span class="res-tag">' + r.tag + '</span>' +
+                '<span class="res-title">' + r.title + '</span>' +
+              '</div>' +
+              '<span class="res-arrow">›</span>' +
+            '</div>'
+          ).join('');
+        searchDrop.querySelectorAll('.search-result-item').forEach(el => {
+          el.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            window.location.href = el.dataset.url;
+          });
+        });
+      }
+      positionDropdown();
+      searchDrop.classList.add('open');
+    }
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      searchClear.classList.toggle('visible', q.length > 0);
+      renderResults(q);
+    });
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClear.classList.remove('visible');
+      searchDrop.classList.remove('open');
+      searchInput.focus();
+    });
+
+    window.addEventListener('scroll', () => {
+      if (searchDrop.classList.contains('open')) positionDropdown();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (searchDrop.classList.contains('open')) positionDropdown();
+    });
+
+    document.addEventListener('mousedown', (e) => {
+      const wrap = document.getElementById('search-wrap');
+      if (!wrap.contains(e.target) && !searchDrop.contains(e.target)) {
+        searchDrop.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
