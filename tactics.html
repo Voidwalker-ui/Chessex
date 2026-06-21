@@ -506,21 +506,15 @@
         searchDrop.innerHTML =
           '<div class="search-dropdown-header">Results</div>' +
           results.map(r =>
-            '<div class="search-result-item" data-url="' + r.url + '">' +
+            '<a class="search-result-item" href="' + r.url + '">' +
               '<div class="res-icon ' + r.cat + '">' + r.icon + '</div>' +
               '<div class="res-text">' +
                 '<span class="res-tag">' + r.tag + '</span>' +
                 '<span class="res-title">' + r.title + '</span>' +
               '</div>' +
               '<span class="res-arrow">›</span>' +
-            '</div>'
+            '</a>'
           ).join('');
-        searchDrop.querySelectorAll('.search-result-item').forEach(el => {
-          el.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            window.location.href = el.dataset.url;
-          });
-        });
       }
       positionDropdown();
       searchDrop.classList.add('open');
