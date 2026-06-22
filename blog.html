@@ -31,7 +31,7 @@
   </header>
 
   <div class="masthead">
-    <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis</span>
+    <span class="masthead-tagline">Openings · Endgames · Tactics · Analysis · Newbie</span>
     <span class="masthead-date">Est. 2025 &nbsp;·&nbsp; Volume I</span>
   </div>
 
@@ -232,7 +232,8 @@
 
   <footer>
     <div class="footer-logo">CHESS<span>-X</span></div>
-    <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
+    <p>The Journal of Chess Mastery &nbsp;|&nbsp; <a href="blog.html">Blog</a>
+    <a href="newbie.html">Newbie</a> &nbsp;·&nbsp; <a href="openings.html">Openings</a> &nbsp;·&nbsp; <a href="tactics.html">Tactics</a> &nbsp;·&nbsp; <a href="endgames.html">Endgames</a></p>
     <p style="margin-top:0.5rem; color:#5a5040;">© 2025 Chess-X. All rights reserved.</p>
   </footer>
 
@@ -322,7 +323,20 @@
   {tag:'Opening', cat:'opening', icon:'♟', title:'Vienna Game', desc:'Vienna Game is best learned as a set of plans rather than a list of moves. The key is to understand what the first pawn structure …', url:'lessons/vienna-game.html'},
   {tag:'Tactic', cat:'tactics', icon:'⚔', title:'X-Ray Attack', desc:'X-Ray Attack is a pattern you want to recognise before calculation becomes heavy. The visual clue matters first, then the forcing …', url:'lessons/x-ray-attack.html'},
   {tag:'Tactic', cat:'tactics', icon:'⚔', title:'Zugzwang', desc:'Zugzwang is a pattern you want to recognise before calculation becomes heavy. The visual clue matters first, then the forcing move…', url:'lessons/zugzwang.html'},
-  {tag:'Tactic', cat:'tactics', icon:'⚔', title:'Zwischenzug', desc:'Zwischenzug is a pattern you want to recognise before calculation becomes heavy. The visual clue matters first, then the forcing m…', url:'lessons/zwischenzug.html'},
+  {tag:'Tactic', cat:'tactics', icon:'⚔', title:'Zwischenzug', desc:'Zwischenzug is a pattern you want to recognise before calculation becomes heavy. The visual clue matters first, then the forcing m…', url:'lessons/zwischenzug.html'},,
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The King — Piece Guide', desc:'The King is the most important piece on the board and the reason all chess rules exist. Learn how it moves, the rules of check and checkmate, and the special castling move.', url:'lessons/newbie-the-king.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Queen — Piece Guide', desc:'The most powerful piece on the board combines the reach of Rook and Bishop. Learn when to deploy the Queen and how to avoid losing it for nothing.', url:'lessons/newbie-the-queen.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Rook — Piece Guide', desc:'A long-range powerhouse on ranks and files. Learn how Rooks move, the importance of open files, the 7th rank, and how Rooks participate in castling.', url:'lessons/newbie-the-rook.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Bishop — Piece Guide', desc:'The diagonal long-range piece that never changes colour. Learn about good and bad Bishops and how to use the Bishop pair effectively.', url:'lessons/newbie-the-bishop.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Knight — Piece Guide', desc:'The only piece that jumps. Learn the L-shape move, why Knights prefer closed positions, what an outpost is, and the devastating knight fork.', url:'lessons/newbie-the-knight.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Pawn — Piece Guide', desc:'Pawns are the soul of chess. Learn how they move, capture, promote, and perform en passant — and why pawn structure shapes the entire game.', url:'lessons/newbie-the-pawn.html'},
+  {tag:'Newbie', cat:'newbie', icon:'♟', title:'The Rules of Chess', desc:'The complete rules: how turns work, what check and checkmate mean, all four special moves, and the ways a game can end in a draw.', url:'lessons/newbie-the-rules.html'},
+  {tag:'Opening', cat:'opening', icon:'♟', title:'Colle System', desc:'White's most reliable low-theory d4 weapon. Build the solid triangle, develop naturally, then unleash a kingside attack without memorising long forced lines.', url:'lessons/colle-system.html'},
+  {tag:'Opening', cat:'opening', icon:'♟', title:'Slav Defence', desc:'The most solid reply to the Queen's Gambit. Support d5 with c6, keep the light-squared bishop free, and avoid the bad bishop problem of the QGD.', url:'lessons/slav-defence.html'},
+  {tag:'Tactic', cat:'tactics', icon:'⚔', title:'Zwischenzug: The In-Between Move', desc:'Insert a forcing intermezzo before the expected recapture. One of the most underappreciated tactical concepts at club level.', url:'lessons/zwischenzug-deep.html'},
+  {tag:'Endgame', cat:'endgame', icon:'♔', title:'King and Pawn Endings', desc:'The bedrock of endgame theory. Master opposition, key squares, and the drawing exceptions that decide every pawn ending.', url:'lessons/king-pawn-endgame.html'},
+  {tag:'Blog', cat:'blog', icon:'✒', title:'How to Use Tactics Puzzles (Most Players Do It Wrong)', desc:'The way most players solve puzzles produces far less improvement than it should. The fix is in the method.', url:'lessons/how-to-use-tactics-puzzles.html'},
+  {tag:'Blog', cat:'blog', icon:'✒', title:'Understanding Piece Coordination: Why Harmony Beats Material', desc:'A weaker army working in harmony can overwhelm a disorganised stronger force. The most important positional concept every chess player must understand.', url:'lessons/understanding-piece-coordination.html'}
 ];
 
     const searchInput = document.getElementById('search-input');
@@ -340,7 +354,7 @@
     function renderResults(q) {
       if (!q) { searchDrop.classList.remove('open'); return; }
       const results = SEARCH_INDEX.filter(r =>
-        r.title.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)
+        r.title.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q) || r.cat.toLowerCase().includes(q) || (r.desc && r.desc.toLowerCase().includes(q))
       ).slice(0, 7);
 
       if (results.length === 0) {

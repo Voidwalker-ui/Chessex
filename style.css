@@ -528,6 +528,7 @@ nav.main-nav a.active {
 .res-icon.tactics  { background: #fff0dc; }
 .res-icon.blog     { background: #e8eaf5; }
 .res-icon.match    { background: #f0f0e8; }
+.res-icon.newbie   { background: #e8f5ee; }
 
 .res-text { flex: 1; min-width: 0; }
 
@@ -1507,4 +1508,5 @@ body.dark-mode .res-icon.endgame  { background: #2a1a1a; }
 body.dark-mode .res-icon.tactics  { background: #2a2010; }
 body.dark-mode .res-icon.blog     { background: #1a1a2a; }
 body.dark-mode .res-icon.match    { background: #202010; }
+body.dark-mode .res-icon.newbie   { background: #102010; }
 body.dark-mode .search-result-empty { color: #888; }
