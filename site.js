@@ -1,4 +1,4 @@
-/* Chess-X — site.js: dark mode + search */
+/* Chess-X — site.js */
 
 /* ── Dark Mode ── */
 (function () {
@@ -18,60 +18,89 @@ function toggleDark() {
 }
 
 /* ── Search ── */
-function openSearch() {
-  document.getElementById('search-overlay').classList.add('is-open');
-  document.getElementById('search-input').focus();
-  document.body.style.overflow = 'hidden';
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('search-input');
+  const searchDrop  = document.getElementById('search-dropdown');
+  const searchClear = document.getElementById('search-clear');
+  const searchField = document.getElementById('search-field');
 
-function closeSearch() {
-  document.getElementById('search-overlay').classList.remove('is-open');
-  document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '';
-  document.body.style.overflow = '';
-}
+  if (!searchInput || !searchDrop) return;
 
-function runSearch(query) {
-  const results = document.getElementById('search-results');
-  if (!query || query.length < 2) { results.innerHTML = ''; return; }
-
-  const q = query.toLowerCase();
-  const matches = (window.CHESSEX_INDEX || []).filter(item =>
-    item.title.toLowerCase().includes(q) ||
-    item.snippet.toLowerCase().includes(q) ||
-    item.tag.toLowerCase().includes(q)
-  );
-
-  if (!matches.length) {
-    results.innerHTML = '<p class="search-empty">No results found — try a different term.</p>';
-    return;
+  function positionDropdown() {
+    if (!searchField) return;
+    const rect = searchField.getBoundingClientRect();
+    searchDrop.style.top   = (rect.bottom + 10) + 'px';
+    searchDrop.style.left  = rect.left + 'px';
+    searchDrop.style.width = Math.max(rect.width, 480) + 'px';
   }
 
-  results.innerHTML = matches.slice(0, 10).map(item => `
-    <a class="search-result-item" href="${item.url}">
-      <div class="result-tag">${item.tag}</div>
-      <div class="result-title">${item.title}</div>
-      <div class="result-snippet">${item.snippet}</div>
-    </a>
-  `).join('');
-}
+  function renderResults(q) {
+    if (!q || q.length < 2) { searchDrop.classList.remove('open'); return; }
 
-document.addEventListener('DOMContentLoaded', function () {
-  /* Keyboard shortcut: / to open search */
+    const index = window.CHESSEX_INDEX || [];
+    const matches = index.filter(item =>
+      item.title.toLowerCase().includes(q) ||
+      item.snippet.toLowerCase().includes(q) ||
+      item.tag.toLowerCase().includes(q)
+    ).slice(0, 8);
+
+    if (!matches.length) {
+      searchDrop.innerHTML = '<div class="search-result-empty">No results for \u201c' + q + '\u201d</div>';
+    } else {
+      const tagIcon = { Opening:'♟', Tactic:'⚔', Endgame:'♔', Blog:'✒', Newbie:'♟' };
+      const tagCat  = { Opening:'opening', Tactic:'tactics', Endgame:'endgame', Blog:'blog', Newbie:'newbie' };
+      searchDrop.innerHTML =
+        '<div class="search-dropdown-header">Results</div>' +
+        matches.map(item =>
+          '<a class="search-result-item" href="' + item.url + '">' +
+            '<div class="res-icon ' + (tagCat[item.tag] || '') + '">' + (tagIcon[item.tag] || '♟') + '</div>' +
+            '<div class="res-text">' +
+              '<span class="res-tag">' + item.tag + '</span>' +
+              '<span class="res-title">' + item.title + '</span>' +
+              '<span class="res-desc">' + (item.snippet ? item.snippet.slice(0, 90) + (item.snippet.length > 90 ? '\u2026' : '') : '') + '</span>' +
+            '</div>' +
+            '<span class="res-arrow">\u203a</span>' +
+          '</a>'
+        ).join('');
+    }
+
+    positionDropdown();
+    searchDrop.classList.add('open');
+  }
+
+  searchInput.addEventListener('input', function () {
+    const q = searchInput.value.trim().toLowerCase();
+    if (searchClear) searchClear.classList.toggle('visible', q.length > 0);
+    renderResults(q);
+  });
+
+  if (searchClear) {
+    searchClear.addEventListener('click', function () {
+      searchInput.value = '';
+      searchClear.classList.remove('visible');
+      searchDrop.classList.remove('open');
+      searchInput.focus();
+    });
+  }
+
+  window.addEventListener('scroll',  function () { if (searchDrop.classList.contains('open')) positionDropdown(); }, { passive: true });
+  window.addEventListener('resize',  function () { if (searchDrop.classList.contains('open')) positionDropdown(); });
+  document.addEventListener('mousedown', function (e) {
+    const wrap = document.getElementById('search-wrap');
+    if (wrap && !wrap.contains(e.target) && !searchDrop.contains(e.target)) {
+      searchDrop.classList.remove('open');
+    }
+  });
+
+  /* Keyboard shortcut: / to focus search */
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
       e.preventDefault();
-      openSearch();
+      searchInput.focus();
     }
-    if (e.key === 'Escape') closeSearch();
-  });
-
-  const input = document.getElementById('search-input');
-  if (input) input.addEventListener('input', () => runSearch(input.value));
-
-  /* Close overlay on backdrop click */
-  const overlay = document.getElementById('search-overlay');
-  if (overlay) overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closeSearch();
+    if (e.key === 'Escape') {
+      searchDrop.classList.remove('open');
+      searchInput.blur();
+    }
   });
 });

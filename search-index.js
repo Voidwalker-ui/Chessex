@@ -66,3 +66,20 @@ window.CHESSEX_INDEX = [
   { tag:"Blog", title:"Why You Should Study Grandmaster Games", snippet:"Puzzles build pattern recognition. But complete game study builds chess understanding.", url:"blog.html#study-grandmaster-games" },
   { tag:"Blog", title:"The Anatomy of a Breakthrough", snippet:"Every pawn chain has a base. Every base is a target. The art lies in identifying it first.", url:"blog.html#anatomy-breakthrough" },
 ];
+
+/* ── NEWBIE ── */
+window.CHESSEX_INDEX = window.CHESSEX_INDEX.concat([
+  { tag:"Newbie", title:"The King",   snippet:"The most important piece. Understand check, checkmate, and castling — all chess rules exist to protect the King.", url:"lessons/newbie-the-king.html" },
+  { tag:"Newbie", title:"The Queen",  snippet:"The most powerful piece. Combines the reach of Rook and Bishop. Learn when to deploy it and how to keep it safe.", url:"lessons/newbie-the-queen.html" },
+  { tag:"Newbie", title:"The Rook",   snippet:"Long-range powerhouse on ranks and files. Needs open lines. Devastating when doubled or on the 7th rank.", url:"lessons/newbie-the-rook.html" },
+  { tag:"Newbie", title:"The Bishop", snippet:"Diagonal piece that never changes colour. The Bishop pair is a lasting advantage in open positions.", url:"lessons/newbie-the-bishop.html" },
+  { tag:"Newbie", title:"The Knight", snippet:"The only piece that jumps. Moves in an L-shape. Dangerous forking piece — always check for knight forks.", url:"lessons/newbie-the-knight.html" },
+  { tag:"Newbie", title:"The Pawn",   snippet:"Pawns are the soul of chess. Learn movement, capture, en passant, and promotion — permanent decisions that shape the game.", url:"lessons/newbie-the-pawn.html" },
+  { tag:"Newbie", title:"The Rules of Chess", snippet:"Turns, check, checkmate, castling, en passant, promotion, stalemate and draws — the complete beginner rulebook.", url:"lessons/newbie-the-rules.html" },
+  { tag:"Opening", title:"Colle System",   snippet:"White's reliable low-theory d4 weapon. Build the solid triangle, develop naturally, then launch a kingside attack.", url:"lessons/colle-system.html" },
+  { tag:"Opening", title:"Slav Defence",   snippet:"The most solid reply to the Queen's Gambit. Support d5 with c6, keep the light-squared bishop active.", url:"lessons/slav-defence.html" },
+  { tag:"Tactic",  title:"Zwischenzug: The In-Between Move", snippet:"Insert a forcing intermezzo before the expected recapture. Spotting it separates intermediate from advanced players.", url:"lessons/zwischenzug-deep.html" },
+  { tag:"Endgame", title:"King and Pawn Endings", snippet:"Opposition, key squares, the rook-pawn exception. The bedrock of all endgame theory.", url:"lessons/king-pawn-endgame.html" },
+  { tag:"Blog", title:"How to Use Tactics Puzzles (Most Players Do It Wrong)", snippet:"Solve fewer puzzles, more slowly. The discomfort of not knowing immediately is where the improvement happens.", url:"lessons/how-to-use-tactics-puzzles.html" },
+  { tag:"Blog", title:"Understanding Piece Coordination: Why Harmony Beats Material", snippet:"A weaker army in harmony can overwhelm a stronger disorganised force. The most important positional concept.", url:"lessons/understanding-piece-coordination.html" },
+]);
