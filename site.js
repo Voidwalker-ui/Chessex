@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!searchInput || !searchDrop) return;
 
+  /* Resolve URLs relative to site root regardless of which subfolder this page is in */
+  const _depth = window.location.pathname.split('/').length - 2;
+  const _prefix = _depth > 1 ? '../'.repeat(_depth - 1) : '';
+  function resolveUrl(url) { return _prefix + url; }
+
+
   function positionDropdown() {
     if (!searchField) return;
     const rect = searchField.getBoundingClientRect();
@@ -52,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchDrop.innerHTML =
         '<div class="search-dropdown-header">Results</div>' +
         matches.map(item =>
-          '<a class="search-result-item" href="' + item.url + '">' +
+          '<a class="search-result-item" href="' + resolveUrl(item.url) + '">' +
             '<div class="res-icon ' + (tagCat[item.tag] || '') + '">' + (tagIcon[item.tag] || '♟') + '</div>' +
             '<div class="res-text">' +
               '<span class="res-tag">' + item.tag + '</span>' +
